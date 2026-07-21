@@ -1,0 +1,6 @@
+node_modules/
+dist/
+drafts/
+.DS_Store
+*.db
+.eve-extension-build-*/

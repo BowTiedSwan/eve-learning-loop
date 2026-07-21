@@ -1,0 +1,73 @@
+{
+  "name": "eve-learning-loop",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Hermes-style self-improving loop for Vercel Eve agents: bounded cross-session memory, agent-authored skills that resurface as native skills, full-text session recall (Turso/libSQL or Postgres), and a curator lifecycle.",
+  "license": "MIT",
+  "author": "BowTiedSwan",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bowtiedswan/eve-learning-loop.git"
+  },
+  "homepage": "https://github.com/bowtiedswan/eve-learning-loop#readme",
+  "bugs": "https://github.com/bowtiedswan/eve-learning-loop/issues",
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [
+    "eve",
+    "eve-extension",
+    "agent",
+    "memory",
+    "skills",
+    "self-improving",
+    "fts",
+    "turso",
+    "postgres",
+    "supabase"
+  ],
+  "eve": {
+    "extension": {
+      "source": "./extension",
+      "dist": "./dist/extension"
+    }
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "exports": {
+    "./store": {
+      "types": "./dist/extension/lib/learning/store.d.ts",
+      "default": "./dist/extension/lib/learning/store.mjs"
+    },
+    "./templates/*": "./templates/*",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./tools": {
+      "types": "./dist/tools/index.d.ts",
+      "default": "./dist/tools/index.mjs"
+    }
+  },
+  "peerDependencies": {
+    "eve": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/pg": "^8.20.0",
+    "esbuild": "^0.28.1",
+    "eve": "0.26.1",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.0",
+    "pg": "^8.16.0",
+    "zod": "^4.4.3"
+  },
+  "scripts": {
+    "build": "eve extension build",
+    "prepare": "eve extension build"
+  }
+}
