@@ -20,7 +20,7 @@
 
 import { defineSchedule } from "eve/schedules";
 
-import { getStore } from "eve-learning-loop/store";
+import { getStore } from "@bowtiedswan/eve-learning-loop/store";
 
 const HOURS = 3_600_000;
 const num = (key: string, fallback: number) => Number(process.env[key] ?? fallback);
