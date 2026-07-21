@@ -1,4 +1,4 @@
-# @bowtiedswan/eve-learning-loop
+# eve-learning-loop
 
 A Hermes-style **self-improving loop** for [Vercel Eve](https://github.com/vercel/eve) agents, packaged as a mountable Eve extension:
 
@@ -15,14 +15,14 @@ Not another fact-memory layer: existing Eve memory integrations remember *facts*
 ## Install & mount
 
 ```sh
-npm i @bowtiedswan/eve-learning-loop
+npm i eve-learning-loop
 ```
 
 Mount it under `agent/extensions/`. The file basename is the namespace (examples below use `learning`):
 
 ```ts
 // agent/extensions/learning.ts
-import learningLoop from "@bowtiedswan/eve-learning-loop";
+import learningLoop from "eve-learning-loop";
 
 export default learningLoop({
   // everything optional — anything omitted falls back to env vars
@@ -53,13 +53,13 @@ Contributions compose under the namespace: tools `learning__memory`, `learning__
 Eve extensions cannot declare schedules, so the curator ships as templates. Copy both (or just the first) into your agent:
 
 ```sh
-cp node_modules/@bowtiedswan/eve-learning-loop/templates/agent/schedules/*.ts agent/schedules/
+cp node_modules/eve-learning-loop/templates/agent/schedules/*.ts agent/schedules/
 ```
 
 - `learning-curator.ts` — deterministic sweep, no model tokens. Daily cron, per-owner gated on interval (default weekly) + idle time (2h). Snapshots skills, then ages them by time since last use or last edit, whichever is later. Never deletes; skips pinned. Tunables via `CURATOR_*` env vars (see file header).
 - `learning-curator-review.ts` — optional weekly LLM pass that consolidates duplicates, patches drift, and archives obsolete skills via `skill_manage`. Costs tokens; delete the file to opt out. If your mount namespace isn't `learning`, update the tool names in its prompt.
 
-The sweep imports the same store through the package's `@bowtiedswan/eve-learning-loop/store` subpath, so both halves see one database.
+The sweep imports the same store through the package's `eve-learning-loop/store` subpath, so both halves see one database.
 
 ## Postgres notes
 

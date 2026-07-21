@@ -1,5 +1,5 @@
 {
-  "name": "@bowtiedswan/eve-learning-loop",
+  "name": "eve-learning-loop",
   "version": "0.1.0",
   "type": "module",
   "description": "Hermes-style self-improving loop for Vercel Eve agents: bounded cross-session memory, agent-authored skills that resurface as native skills, full-text session recall (Turso/libSQL or Postgres), and a curator lifecycle.",
